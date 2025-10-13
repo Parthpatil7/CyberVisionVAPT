@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerability Assessment Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .card {
+            background-color: #34495e;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            width: calc(25% - 40px);
+            text-align: center;
+        }
+        .chart {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+        }
+        .progress {
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-bar {
+            height: 20px;
+            background-color: #27ae60;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+        }
+        h2, h3 {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vulnerability Assessment Dashboard</h1>
+        <div class="metrics">
+            <div class="card">
+                <h3><i class="fas fa-exclamation-triangle"></i> Critical</h3>
+                <p>5</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-exclamation-circle"></i> High</h3>
+                <p>12</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-exclamation"></i> Medium</h3>
+                <p>8</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-info-circle"></i> Low</h3>
+                <p>20</p>
+            </div>
+        </div>
+        <h2>Vulnerability Distribution</h2>
+        <div class="chart" id="vulnerability-distribution"></div>
+        <h2>Scan Status</h2>
+        <div class="progress">
+            <div class="progress-bar" style="width: 70%;">70%</div>
+        </div>
+        <h2>Recent Findings</h2>
+        <ul>
+            <li>Finding 1: SQL Injection vulnerability in login module</li>
+            <li>Finding 2: XSS vulnerability in user profile</li>
+            <li>Finding 3: CSRF vulnerability in settings page</li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Chart.js code to create charts for vulnerability distribution
+        const ctx = document.getElementById('vulnerability-distribution').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Critical', 'High', 'Medium', 'Low'],
+                datasets: [{
+                    label: 'Number of Vulnerabilities',
+                    data: [5, 12, 8, 20],
+                    backgroundColor: ['#e74c3c', '#f39c12', '#f1c40f', '#2ecc71'],
+                    borderColor: ['#c0392b', '#e67e22', '#f39c12', '#27ae60'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
